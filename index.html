@@ -46,7 +46,7 @@
             <div class="search-bar col-md-6 mx-auto">
                 <h1 class="text-center">Lyrics Search</h1>
                 <div class="search-box my-5">
-                    <input type="text" class="form-control" placeholder="Enter your artist song name" id="song-name">
+                    <input type="text" class="form-control" placeholder="Enter your artist song name e.g.Love Yourself " id="song-name">
                     <button class="btn btn-success search-btn" onclick='getSuggestions()'>Search</button>
                 </div>
             </div>
@@ -324,6 +324,7 @@
 
     <script>
         let List;
+        // a function that fetches the suggestions
         function getSuggestions(){
             const songName=document.getElementById('song-name').value;
             console.log(songName);
@@ -344,9 +345,13 @@
                 }
 
             document.getElementById('result').style.display='block';    
-            })
+            });
+
+            document.getElementsByClassName('single-lyrics').style.display='none';
+
         }
 
+        // fetching the exact lyrics
         function getLyrics(songNum){
             console.log(List[songNum]);
             let title=List[songNum].title;
@@ -373,9 +378,11 @@
             });      
         }
 
+        // download link for specific song
         function downloadLink(songNum){
            window.open(List[songNum].preview);
         }
+        // preview link for specific song 
         function songLink(songNum){
             window.open(List[songNum].link);
         }
